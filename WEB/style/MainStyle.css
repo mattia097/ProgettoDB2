@@ -1,0 +1,25 @@
+@charset "ISO-8859-1";
+
+#tab-login {
+	border: 1px solid black;
+}
+
+#tab-login td {
+	border: 1px solid black;
+}
+
+#tab-registration {
+	border: 1px solid black;
+}
+
+#tab-registration td {
+	border: 1px solid black;
+}
+
+#tab-questionnaire-marketing {
+	border: 1px solid black;
+}
+
+#tab-questionnaire-marketing td {
+	border: 1px solid black;
+}

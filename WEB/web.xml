@@ -1,30 +1,75 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd" id="WebApp_ID" version="4.0">
-  <display-name>ProgettoDB2</display-name>
-  <!--<welcome-file-list>
-    <welcome-file>index.html</welcome-file>
-    <welcome-file>index.htm</welcome-file>
-    <welcome-file>index.jsp</welcome-file>
-    <welcome-file>default.html</welcome-file>
-    <welcome-file>default.htm</welcome-file>
-    <welcome-file>default.jsp</welcome-file>
-  </welcome-file-list>-->
-  
-  <servlet>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
+	id="WebApp_ID" version="4.0">
+
+	<display-name>ProgettoDB2</display-name>
+
+	<!-- Da aggiungere per consentire ai file .css di essere trovati -->
+	<servlet-mapping>
+		<servlet-name>default</servlet-name>
+		<url-pattern>*.css</url-pattern>
+	</servlet-mapping>
+
+	<!-- *** -->
+
+	<servlet>
 		<servlet-name>LoginServlet</servlet-name>
-		<servlet-class>it.polimi.progettodb2.LoginServlet</servlet-class>
+		<servlet-class>it.polimi.db2.progettodb2.controllers.LoginServlet</servlet-class>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>LoginServlet</servlet-name>
-		<url-pattern>/</url-pattern>
+		<url-pattern>/LoginServlet</url-pattern>
 	</servlet-mapping>
-	
+
 	<servlet>
 		<servlet-name>Login</servlet-name>
 		<jsp-file>/Login.jsp</jsp-file>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>Login</servlet-name>
-		<url-pattern>/Login</url-pattern>
+		<url-pattern>/</url-pattern>
 	</servlet-mapping>
+
+	<!-- *** -->
+
+	<servlet>
+		<servlet-name>RegistrationServlet</servlet-name>
+		<servlet-class>it.polimi.db2.progettodb2.controllers.RegistrationServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>RegistrationServlet</servlet-name>
+		<url-pattern>/RegistrationServlet</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>Registration</servlet-name>
+		<jsp-file>/Registration.jsp</jsp-file>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Registration</servlet-name>
+		<url-pattern>/Registration</url-pattern>
+	</servlet-mapping>
+
+	<!-- *** -->
+
+	<servlet>
+		<servlet-name>QuestionnaireMarketingServlet</servlet-name>
+		<servlet-class>it.polimi.db2.progettodb2.controllers.QuestionnaireMarketingServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>QuestionnaireMarketingServlet</servlet-name>
+		<url-pattern>/QuestionnaireMarketingServlet</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>QuestionnaireMarketing</servlet-name>
+		<jsp-file>/QuestionnaireMarketing.jsp</jsp-file>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>QuestionnaireMarketing</servlet-name>
+		<url-pattern>/QuestionnaireMarketing</url-pattern>
+	</servlet-mapping>
+
 </web-app>
