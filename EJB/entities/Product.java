@@ -3,8 +3,16 @@ package it.polimi.db2.progettodb2.entities;
 import java.io.Serializable;
 import java.util.Date;
 
-import javax.persistence.*;
-
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 /**
  * Entity implementation class for Entity: Product
  *
@@ -19,9 +27,8 @@ public class Product implements Serializable {
 	 * - l'amministratore è già inserito, non c'è il rischio che venga inserito senza un prodotto;
 	 * */
 	@ManyToOne
-	@JoinColumn(name = "id")
-	@Column(name = "administrator_id", nullable = false)
-	private int administratorId;
+	@JoinColumn(name = "administrator_id", nullable = false) 
+	private Administrator administrator;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -39,13 +46,16 @@ public class Product implements Serializable {
 		super();
 	}
 
-	public int getAdministratorId() {
-		return administratorId;
+
+	public Administrator getAdministrator() {
+		return administrator;
 	}
 
-	public void setAdministratorId(int administratorId) {
-		this.administratorId = administratorId;
+
+	public void setAdministrator(Administrator administrator) {
+		this.administrator = administrator;
 	}
+
 
 	public int getProductId() {
 		return productId;
@@ -69,6 +79,12 @@ public class Product implements Serializable {
 
 	public void setDate(Date date) {
 		this.date = date;
+	}
+
+
+	@Override
+	public String toString() {
+		return "Product [productId=" + productId + ", productName=" + productName + ", date=" + date + "]";
 	}
 
 }

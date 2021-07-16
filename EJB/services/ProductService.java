@@ -38,11 +38,13 @@ public class ProductService {
 			throw new ElementNotFoundException("L'elemento richiesto non esiste (amministratore)");
 		}
 
-		newProduct.setAdministratorId(administrator.getId());
+		newProduct.setAdministrator(administrator);
 		// productId è automatico ??
 		newProduct.setProductName(productName);
 		newProduct.setDate(date);
 
 		entityManager.persist(newProduct);
 	}
+	
+	
 }

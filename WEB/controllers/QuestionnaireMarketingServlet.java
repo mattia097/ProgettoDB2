@@ -1,13 +1,19 @@
 package it.polimi.db2.progettodb2.controllers;
-
 import java.io.IOException;
+
+import javax.ejb.EJB;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import it.polimi.db2.progettodb2.services.OffensiveWordService;
+
 public class QuestionnaireMarketingServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	
+	@EJB(name = "it.polimi.db2.progettodb2.services/OffensiveWordService")
+	private OffensiveWordService offensiveWordService;
 
 	/**
 	 * @see HttpServlet#HttpServlet()
@@ -40,6 +46,27 @@ public class QuestionnaireMarketingServlet extends HttpServlet {
 			throws ServletException, IOException {
 
 		//doGet(request, response);
+	}
+	
+	//check if an answer contains offensives, assuming the answer is a String
+	private boolean containsOffensiveWord(String answer) {
+		String[] words = splitSentenceByWords(answer);
+		
+		for(String word : words) {
+			if(offensiveWordService.isOffensiveWord(word))
+				return true;
+		}
+		
+		return false;
+	}
+	
+	private String[] splitSentenceByWords (String sentence) {
+		if (sentence == null || sentence.equals(""))
+			return new String[0];
+		
+		String[] words = sentence.split(" ");
+		 
+		return words;
 	}
 
 }

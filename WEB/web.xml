@@ -71,5 +71,25 @@
 		<servlet-name>QuestionnaireMarketing</servlet-name>
 		<url-pattern>/QuestionnaireMarketing</url-pattern>
 	</servlet-mapping>
+	
+		<!-- *** -->
+	
+		<servlet>
+		<servlet-name>Home</servlet-name>
+		<jsp-file>/Home.jsp</jsp-file>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Home</servlet-name>
+		<url-pattern>/Home</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>StatisticQuestionnaire</servlet-name>
+		<jsp-file>/StatisticQuestionnaire.jsp</jsp-file>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>StatisticQuestionnaire</servlet-name>
+		<url-pattern>/StatisticQuestionnaire.jsp</url-pattern>
+	</servlet-mapping>
 
 </web-app>
