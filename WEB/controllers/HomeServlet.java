@@ -26,16 +26,18 @@ public class HomeServlet extends HttpServlet {
 	}
 
 	@Override
-	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		super.doGet(req, resp);
+		
+		request.setAttribute("productOfTheDay", homeService.getProductOfTheDay());
+		
+		request.getRequestDispatcher("/Home").forward(request, response);
 	}
 
 	@Override
-	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		RequestDispatcher ds = req.getRequestDispatcher("/Home");
-		ds.forward(req, resp);
+		super.doGet(request, response);
 	}
 
 }
