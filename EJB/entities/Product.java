@@ -10,24 +10,30 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+
 /**
  * Entity implementation class for Entity: Product
  *
  */
 @Entity
-@Table(name = "product")
+
+@NamedQuery(name = "getDaily", query = "SELECT p FROM Product p WHERE p.date = :date")
+
+@Table(name = "Product")
 public class Product implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	/* unidirezionale, l'amministratore non ha riferimenti ai prodotti */
-	/* no cascade: 
-	 * - l'amministratore è già inserito, non c'è il rischio che venga inserito senza un prodotto;
-	 * */
+	/*
+	 * no cascade: - l'amministratore è già inserito, non c'è il rischio che venga
+	 * inserito senza un prodotto;
+	 */
 	@ManyToOne
-	@JoinColumn(name = "administrator_id", nullable = false) 
+	@JoinColumn(name = "administrator_id", nullable = false)
 	private Administrator administrator;
 
 	@Id
@@ -46,16 +52,13 @@ public class Product implements Serializable {
 		super();
 	}
 
-
 	public Administrator getAdministrator() {
 		return administrator;
 	}
 
-
 	public void setAdministrator(Administrator administrator) {
 		this.administrator = administrator;
 	}
-
 
 	public int getProductId() {
 		return productId;
@@ -80,7 +83,6 @@ public class Product implements Serializable {
 	public void setDate(Date date) {
 		this.date = date;
 	}
-
 
 	@Override
 	public String toString() {

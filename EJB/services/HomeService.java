@@ -7,7 +7,7 @@ import javax.persistence.PersistenceContext;
 //import it.polimi.db2.progettodb2.entities.Administrator;
 import it.polimi.db2.progettodb2.entities.Product;
 
-import java.util.Date;
+import java.sql.Date;
 
 import javax.ejb.LocalBean;
 
@@ -32,9 +32,9 @@ public class HomeService {
 	
 	public Product getProductOfTheDay() {
 		
-		Date date1 = new Date();
-		
-		productOfTheDay = entityManager.createNamedQuery("Product.getDaily", Product.class).setParameter(1, date1).getResultList().get(0);
+		Date date1 = Date.valueOf("2021-07-21") ; //new java.sql.Date(System.currentTimeMillis())
+
+		productOfTheDay = entityManager.createNamedQuery("getDaily", Product.class).setParameter("date",date1).getSingleResult();
 		
 		return productOfTheDay;
 	}
