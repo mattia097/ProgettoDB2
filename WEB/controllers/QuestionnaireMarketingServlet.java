@@ -1,5 +1,6 @@
 package it.polimi.db2.progettodb2.controllers;
 import java.io.IOException;
+import java.util.List;
 
 import javax.ejb.EJB;
 import javax.servlet.ServletException;
@@ -7,10 +8,15 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import it.polimi.db2.progettodb2.entities.Question;
 import it.polimi.db2.progettodb2.services.OffensiveWordService;
+import it.polimi.db2.progettodb2.services.QuestionService;
 
 public class QuestionnaireMarketingServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	
+	@EJB(name = "it.polimi.db2.progettodb2.services/QuestionService")
+	private QuestionService questionService;
 	
 	@EJB(name = "it.polimi.db2.progettodb2.services/OffensiveWordService")
 	private OffensiveWordService offensiveWordService;
@@ -31,8 +37,10 @@ public class QuestionnaireMarketingServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		List<Question> questionsOfProductOfTheDay = questionService.getQuestionsOfProductOfTheDay();		
+		
+		request.setAttribute("questions", questionsOfProductOfTheDay);
+		request.getRequestDispatcher("/QuestionnaireMarketing").forward(request, response);
 	}
 
 	/**
