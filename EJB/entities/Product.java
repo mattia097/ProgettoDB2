@@ -47,6 +47,17 @@ public class Product implements Serializable {
 	@Temporal(TemporalType.DATE)
 	@Column(name = "date", nullable = false)
 	private Date date;
+	
+	@Column(name = "image", nullable = false)
+	private String image;
+
+	public String getImage() {
+		return image;
+	}
+
+	public void setImage(String imageUrl) {
+		this.image = imageUrl;
+	}
 
 	public Product() {
 		super();
@@ -86,7 +97,10 @@ public class Product implements Serializable {
 
 	@Override
 	public String toString() {
-		return "Product [productId=" + productId + ", productName=" + productName + ", date=" + date + "]";
+		return "Product [administrator=" + administrator + ", productId=" + productId + ", productName=" + productName
+				+ ", date=" + date + ", image=" + image + "]";
 	}
+
+	
 
 }

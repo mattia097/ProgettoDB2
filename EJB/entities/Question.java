@@ -38,7 +38,7 @@ public class Question implements Serializable {
 		this.questionId = questionId;
 	}
 
-	public Product getProductId() {
+	public Product getProduct() {
 		return product;
 	}
 
@@ -56,7 +56,7 @@ public class Question implements Serializable {
 
 	@Override
 	public String toString() {
-		return "QuestionId: " + this.getQuestionId() + "ProductId: " + this.getProductId() + "QuestionText: "
+		return "QuestionId: " + this.getQuestionId() + "ProductId: " + this.getProduct() + "QuestionText: "
 				+ this.getQuestionText();
 	}
 

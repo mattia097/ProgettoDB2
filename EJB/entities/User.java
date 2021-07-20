@@ -1,7 +1,9 @@
 package it.polimi.db2.progettodb2.entities;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.*;
 
@@ -12,7 +14,11 @@ import javax.persistence.*;
 @Entity
 @Table(name = "user")
 @NamedQuery(name = "User.checkCredentials", query = "SELECT u FROM User u WHERE u.username = ?1 and u.password = ?2")
+@NamedQuery(name = "User.getByPoints", query ="SELECT u FROM User u ORDER BY u.points DESC" )
+//@NamedQuery(name = "User.getByEmail", query ="SELECT u FROM User u WHERE u.email = :email" )
 public class User implements Serializable {
+	
+
 	private static final long serialVersionUID = 1L;
 
 	@Column(nullable = false)
@@ -39,6 +45,17 @@ public class User implements Serializable {
 
 	@Column(name = "is_public", nullable = false)
 	private boolean isPublic;
+	
+	@Column(name = "points")
+	private int points;
+
+	public int getPoints() {
+		return points;
+	}
+
+	public void setPoints(int points) {
+		this.points = points;
+	}
 
 	public User() {
 		super();
@@ -107,5 +124,24 @@ public class User implements Serializable {
 	public void setPublic(boolean isPublic) {
 		this.isPublic = isPublic;
 	}
+	
+	@Override
+	public String toString() {
+		return "User [name=" + name + ", surname=" + surname + ", username=" + username + ", password=" + password
+				+ ", email=" + email + ", birthDate=" + birthDate + ", sex=" + sex + ", isPublic=" + isPublic
+				+ ", points=" + points + "]";
+	}
+	
+//	public List<String> ToLeaderboard(List<User> users){
+//		List<String> leaderboard = new ArrayList<String>();
+//		int counter;
+//		
+//		for(User u: users) {
+//			leaderboard.add(u.username + " " + u.points + "points");
+//		}
+//		
+//		
+//		return leaderboard;
+//	}
 
 }

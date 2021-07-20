@@ -58,8 +58,8 @@
 			
 			<table id="tab-buttons">
 			<tr>
-				<td> <button class='buttons' type='submit' form="questions" name='submit' >Submit</button> </td><!-- TODO: formaction URL-->
-				<td> <button class='buttons' type='submit' form="questions" name="cancel" formaction="/ProgettoDB2_WEB/HomeServlet" formmethod="POST">Cancel</button> </td>
+				<td> <button class='buttons' type='submit' form="questions" name='submit' >Submit</button> </td>
+				<td> <button class='buttons' type='submit' form="questions" name="cancel" formaction="/ProgettoDB2_WEB/HomeServlet" formmethod="GET">Cancel</button> </td>
 				<td> <button class='buttons' type='submit' form="questions" name="previous" formaction="/ProgettoDB2_WEB/QuestionnaireMarketingServlet" formmethod="GET">Previous</button> </td>
 			</tr>
 		</table>

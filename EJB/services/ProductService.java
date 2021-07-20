@@ -1,6 +1,6 @@
 package it.polimi.db2.progettodb2.services;
 
-import java.util.Date;
+import java.sql.Date;
 
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -17,6 +17,7 @@ import it.polimi.db2.progettodb2.exceptions.ElementNotFoundException;
 public class ProductService {
 	@PersistenceContext(unitName = "DB2ProjectEJB")
 	private EntityManager entityManager;
+	private Product productOfTheDay;
 
 	/**
 	 * Default constructor.
@@ -44,6 +45,16 @@ public class ProductService {
 		newProduct.setDate(date);
 
 		entityManager.persist(newProduct);
+	}
+	
+	
+	public Product getProductOfTheDay() {
+		
+		Date date1 = Date.valueOf("2021-07-21") ; //new java.sql.Date(System.currentTimeMillis())
+
+		productOfTheDay = entityManager.createNamedQuery("getDaily", Product.class).setParameter("date",date1).getSingleResult();
+		
+		return productOfTheDay;
 	}
 	
 	

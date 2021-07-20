@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 
 //TODO: Scrivere l'esito del questionario sul database
 
-@WebServlet("/GreetingsServlet")
+
 public class GreetingsServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	

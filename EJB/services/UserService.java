@@ -1,13 +1,17 @@
 package it.polimi.db2.progettodb2.services;
 
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.concurrent.atomic.AtomicInteger;
 
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.PersistenceException;
+
+import it.polimi.db2.progettodb2.entities.Answer;
 
 import it.polimi.db2.progettodb2.entities.User;
 import it.polimi.db2.progettodb2.exceptions.CredentialsException;
@@ -66,4 +70,44 @@ public class UserService {
 		/* Operazione fatta in automatico alla fine del metodo, non è necessaria... */
 		entityManager.flush(); /* Sincronizzazione col DB */
 	}
+	
+	public List<String> getByPoints(List<Answer> dailyAnswers){
+		List<User> users = new ArrayList<User>();
+		List<AtomicInteger> points = new ArrayList<AtomicInteger>();
+
+		User user;
+		int index;
+		
+		for(Answer a : dailyAnswers) {
+			user = a.getUser();
+			if (!(users.contains(user))) {
+				users.add(a.getUser());
+				points.add(new AtomicInteger(a.getPoints()));
+			}
+			else {
+				index = users.indexOf(user);
+				points.get(index).set(points.get(index).get() + a.getPoints());
+			}
+		}
+		return ToLeaderboard(users, points);
+		//entityManager.createNamedQuery("User.getByPoints", User.class).getResultList()
+	}
+	
+	public List<String> ToLeaderboard(List<User> users, List<AtomicInteger> points){
+		List<String> leaderboard = new ArrayList<String>();
+		
+		
+		for(int i = 1; i <= users.size(); i++) {
+			leaderboard.add(i + ".  " + users.get(i-1).getUsername() + ":                      " + points.get(i-1).get() + " points");
+			
+		}
+		
+		
+		return leaderboard;
+	}
+	
+	
+//	public User getByEmail(String email) {
+//		return entityManager.createNamedQuery("User.getByEmail", User.class).getSingleResult();
+//	}
 }

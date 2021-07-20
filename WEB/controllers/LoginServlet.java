@@ -60,10 +60,14 @@ public class LoginServlet extends HttpServlet {
 		}
 
 		if (user == null) {
+			//System.out.println("utente non esiste");
 			/* L'utente non esiste */
 		} else {
 			/* L'utente esiste */
+			//System.out.println("esiste");
 			request.getSession().setAttribute("user", user);
+			response.sendRedirect("HomeServlet");
+			//request.getRequestDispatcher("/HomeServlet").forward(request, response);
 		}
 	}
 

@@ -9,13 +9,17 @@
 
 <body>
 
-	<h1>Welcome to the Home Page</h1>
+	<h1>Welcome to the Home Page ${user.getUsername()}</h1>
 	<div class="dayprod">
 
 		<p>Product of the day (name, image, reviews)</p>
-		<p>${productOfTheDay}</p>
+		<p>${productOfTheDay.getProductName()}</p>
+		
+		<!-- <img src= url alt="Girl in a jacket"> -->
+		 <img src= "img/${productOfTheDay.getImage()}" alt="product image">
+		 <!-- ${pageContext.servletContext.contextPath}/src/main/webapp/img/box.jpg -->
+		 
 
-		<!-- use bean -->
 
 	</div>
 	<div class="questionnaire">
@@ -23,7 +27,7 @@
 
 	</div>
 	<div class="leaderboard">
-		<a href="/ProgettoDB2_WEB/Leaderboard">Leaderboard</a>
+		<a href="/ProgettoDB2_WEB/LeaderboardServlet">Leaderboard</a>
 		<!-- TODO: da fare -->
 
 	</div>

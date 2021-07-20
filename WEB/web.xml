@@ -2,14 +2,20 @@
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xmlns="http://xmlns.jcp.org/xml/ns/javaee"
 	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
-	id="WebApp_ID" version="4.0">
+	version="4.0">
 
-	<display-name>ProgettoDB2</display-name>
+	<display-name>ProgettoDB2_WEB</display-name>
 
 	<!-- Da aggiungere per consentire ai file .css di essere trovati -->
 	<servlet-mapping>
 		<servlet-name>default</servlet-name>
 		<url-pattern>*.css</url-pattern>
+	</servlet-mapping>
+	
+	
+	<servlet-mapping>
+		<servlet-name>default</servlet-name>
+		<url-pattern>*.jpg</url-pattern>
 	</servlet-mapping>
 
 	<!-- *** -->
@@ -71,10 +77,10 @@
 		<servlet-name>QuestionnaireMarketing</servlet-name>
 		<url-pattern>/QuestionnaireMarketing</url-pattern>
 	</servlet-mapping>
-	
-		<!-- *** -->
-	
-		<servlet>
+
+	<!-- *** -->
+
+	<servlet>
 		<servlet-name>Home</servlet-name>
 		<jsp-file>/Home.jsp</jsp-file>
 	</servlet>
@@ -82,6 +88,8 @@
 		<servlet-name>Home</servlet-name>
 		<url-pattern>/Home</url-pattern>
 	</servlet-mapping>
+
+	<!-- *** -->
 	
 	<servlet>
 		<servlet-name>StatisticQuestionnaire</servlet-name>
@@ -89,7 +97,47 @@
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>StatisticQuestionnaire</servlet-name>
-		<url-pattern>/StatisticQuestionnaire.jsp</url-pattern>
+		<url-pattern>/StatisticQuestionnaire</url-pattern>
+	</servlet-mapping>
+
+	<!-- *** -->
+	
+	<servlet>
+		<servlet-name>GreetingsServlet</servlet-name>
+		<servlet-class>it.polimi.db2.progettodb2.controllers.GreetingsServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>GreetingsServlet</servlet-name>
+		<url-pattern>/GreetingsServlet</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>Greetings</servlet-name>
+		<jsp-file>/Greetings.jsp</jsp-file>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Greetings</servlet-name>
+		<url-pattern>/Greetings</url-pattern>
+	</servlet-mapping>
+	
+		<!-- *** -->
+		
+	<servlet>
+		<servlet-name>LeaderboardServlet</servlet-name>
+		<servlet-class>it.polimi.db2.progettodb2.controllers.LeaderboardServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>LeaderboardServlet</servlet-name>
+		<url-pattern>/LeaderboardServlet</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>Leaderboard</servlet-name>
+		<jsp-file>/Leaderboard.jsp</jsp-file>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Leaderboard</servlet-name>
+		<url-pattern>/Leaderboard</url-pattern>
 	</servlet-mapping>
 
 </web-app>

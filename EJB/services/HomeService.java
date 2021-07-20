@@ -30,14 +30,14 @@ public class HomeService {
 	}
 	
 	
-	public Product getProductOfTheDay() {
-		
-		Date date1 = Date.valueOf("2021-07-21") ; //new java.sql.Date(System.currentTimeMillis())
-
-		productOfTheDay = entityManager.createNamedQuery("getDaily", Product.class).setParameter("date",date1).getSingleResult();
-		
-		return productOfTheDay;
-	}
+//	public Product getProductOfTheDay() {
+//		
+//		Date date1 = Date.valueOf("2021-07-21") ; //new java.sql.Date(System.currentTimeMillis())
+//
+//		productOfTheDay = entityManager.createNamedQuery("getDaily", Product.class).setParameter("date",date1).getSingleResult();
+//		
+//		return productOfTheDay;
+//	}
 	
 	
 	
