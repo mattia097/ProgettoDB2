@@ -10,8 +10,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-
+import it.polimi.db2.progettodb2.entities.Product;
 import it.polimi.db2.progettodb2.services.ProductService;
+import it.polimi.db2.progettodb2.services.ReviewService;
 
 @WebServlet("/HomeServlet")
 public class HomeServlet extends HttpServlet {
@@ -19,6 +20,9 @@ public class HomeServlet extends HttpServlet {
 
 	@EJB(name = "it.polimi.db2.progettodb2.services/ProductService")
 	private ProductService productService;
+	
+	@EJB(name = "it.polimi.db2.progettodb2.services/ReviewService")
+	private ReviewService reviewService;
 
 	public HomeServlet() {
 		super();
@@ -27,8 +31,12 @@ public class HomeServlet extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		Product product = productService.getProductOfTheDay();
 		
-		request.setAttribute("productOfTheDay", productService.getProductOfTheDay());
+		request.setAttribute("productOfTheDay", product);
+		
+		request.setAttribute("reviews", reviewService.getDailyReviews(product));
+		
 		
 		request.getRequestDispatcher("/Home").forward(request, response);
 	}
