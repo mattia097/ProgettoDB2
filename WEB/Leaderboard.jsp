@@ -10,8 +10,8 @@
 <body>
 	<h1>This is the leaderboard of today</h1>
 	
-	 <c:forEach items="${users}" var="item">
-      <td><c:out value="${item}" /></td><br>
+	 <c:forEach items="${users}" var="user">
+      <td><c:out value="${user}" /></td><br>
   </c:forEach>
 <br>
 <br>

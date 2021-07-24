@@ -1,9 +1,9 @@
 package it.polimi.db2.progettodb2.entities;
 
 import java.io.Serializable;
-import java.util.ArrayList;
+
 import java.util.Date;
-import java.util.List;
+
 
 import javax.persistence.*;
 
@@ -132,16 +132,5 @@ public class User implements Serializable {
 				+ ", points=" + points + "]";
 	}
 	
-//	public List<String> ToLeaderboard(List<User> users){
-//		List<String> leaderboard = new ArrayList<String>();
-//		int counter;
-//		
-//		for(User u: users) {
-//			leaderboard.add(u.username + " " + u.points + "points");
-//		}
-//		
-//		
-//		return leaderboard;
-//	}
 
 }
