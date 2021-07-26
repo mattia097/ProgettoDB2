@@ -9,9 +9,8 @@ import javax.persistence.*;
  */
 @Entity
 @NamedQuery(name = "Question.getQuestionsByProduct", query = "SELECT q FROM Question q WHERE q.product = :product")
-@NamedQuery(name = "Question.getAllQuestions", query = "SELECT q FROM Question q")
 @Table(name = "question")
-public class Question implements Serializable, Comparable<Question> {
+public class Question implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
@@ -43,8 +42,8 @@ public class Question implements Serializable, Comparable<Question> {
 		return product;
 	}
 
-	public void setProduct(Product product) {
-		this.product = product;
+	public void setProductId(Product productId) {
+		this.product = productId;
 	}
 
 	public String getQuestionText() {
@@ -59,13 +58,6 @@ public class Question implements Serializable, Comparable<Question> {
 	public String toString() {
 		return "QuestionId: " + this.getQuestionId() + "ProductId: " + this.getProduct() + "QuestionText: "
 				+ this.getQuestionText();
-	}
-
-	@Override
-	public int compareTo(Question o) {
-		return this.getProduct().compareTo(o.getProduct());
-		// TODO Auto-generated method stub
-		
 	}
 
 }

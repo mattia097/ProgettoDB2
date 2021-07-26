@@ -37,7 +37,7 @@ public class Answer implements Serializable {
 	private int points;
 	
 	@Column(name = "answer")
-	private boolean answer;
+	private Boolean answer;
 	
 	public Answer() {
 		super();
@@ -75,11 +75,11 @@ public class Answer implements Serializable {
 		this.points = points;
 	}
 
-	public boolean isAnswer() {
+	public Boolean isAnswer() {
 		return answer;
 	}
 
-	public void setAnswer(boolean answer) {
+	public void setAnswer(Boolean answer) {
 		this.answer = answer;
 	}
 

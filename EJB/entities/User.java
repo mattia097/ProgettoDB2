@@ -1,9 +1,9 @@
 package it.polimi.db2.progettodb2.entities;
 
 import java.io.Serializable;
-
+import java.util.ArrayList;
 import java.util.Date;
-
+import java.util.List;
 
 import javax.persistence.*;
 
@@ -38,16 +38,18 @@ public class User implements Serializable {
 	private String email;
 
 	@Temporal(TemporalType.DATE)
-	@Column(name = "birth_date", nullable = false)
+	@Column(name = "birth_date")
 	private Date birthDate;
 
 	private String sex;
 
-	@Column(name = "is_public", nullable = false)
-	private boolean isPublic;
+	private String expertise;
 	
 	@Column(name = "points")
 	private int points;
+	
+	@Column(name = "is_public", nullable = false)
+	private boolean isPublic;
 
 	public int getPoints() {
 		return points;
@@ -131,6 +133,25 @@ public class User implements Serializable {
 				+ ", email=" + email + ", birthDate=" + birthDate + ", sex=" + sex + ", isPublic=" + isPublic
 				+ ", points=" + points + "]";
 	}
+
+	public String getExpertise() {
+		return expertise;
+	}
+
+	public void setExpertise(String expertise) {
+		this.expertise = expertise;
+	}
 	
+//	public List<String> ToLeaderboard(List<User> users){
+//		List<String> leaderboard = new ArrayList<String>();
+//		int counter;
+//		
+//		for(User u: users) {
+//			leaderboard.add(u.username + " " + u.points + "points");
+//		}
+//		
+//		
+//		return leaderboard;
+//	}
 
 }

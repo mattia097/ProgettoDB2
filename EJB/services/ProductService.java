@@ -1,7 +1,6 @@
 package it.polimi.db2.progettodb2.services;
 
 import java.sql.Date;
-import java.util.List;
 
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -26,7 +25,7 @@ public class ProductService {
 	public ProductService() {
 	}
 
-	public void insertProduct(int administratorId, String productName, Date date, String productImage)
+	public void insertProduct(int administratorId, int productId, String productName, Date date)
 			throws ElementNotFoundException {
 		Product newProduct = new Product();
 
@@ -44,34 +43,18 @@ public class ProductService {
 		// productId è automatico ??
 		newProduct.setProductName(productName);
 		newProduct.setDate(date);
-		newProduct.setImage(productImage);
+
 		entityManager.persist(newProduct);
-		entityManager.flush();
 	}
 	
 	
 	public Product getProductOfTheDay() {
 		
-		Date date1 = new java.sql.Date(System.currentTimeMillis());//Date.valueOf("2021-07-21") ; 
+		Date date1 = Date.valueOf("2021-07-21") ; //new java.sql.Date(System.currentTimeMillis())
 
 		productOfTheDay = entityManager.createNamedQuery("getDaily", Product.class).setParameter("date",date1).getSingleResult();
 		
 		return productOfTheDay;
-	}
-	
-	public List<Product> getAllProducts() {
-		return entityManager.createNamedQuery("getAllProducts", Product.class).getResultList();
-	}
-	
-	public void modifyProductDate(int productId, Date date) throws ElementNotFoundException{
-		Product product = entityManager.find(Product.class, productId);
-		if (product == null) {
-			throw new ElementNotFoundException("L'elemento richiesto non esiste (prodotto)");
-		}
-		
-		product.setDate(date);
-		entityManager.persist(product);
-		entityManager.flush();
 	}
 	
 	

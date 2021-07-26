@@ -1,6 +1,5 @@
 package it.polimi.db2.progettodb2.services;
 
-
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -66,47 +65,57 @@ public class UserService {
 		newUser.setSex(sex);
 
 		entityManager.persist(newUser); /* Aggiunto al PersistenceContext */
-		
+
 		/* Operazione fatta in automatico alla fine del metodo, non è necessaria... */
 		entityManager.flush(); /* Sincronizzazione col DB */
 	}
+
+	public void updateStatisticalData(User user, String newSex, String newExpertise) {
+		User userToUpdate = entityManager.find(User.class, user.getEmail());
+		
+		userToUpdate.setSex(newSex);
+		userToUpdate.setExpertise(newExpertise);
+		
+		// inutile, fatto in automatico da entityManager dopo "find"
+		//entityManager.persist(user);
+		
+		entityManager.flush();
+	}
 	
-	public List<String> getByPoints(List<Answer> dailyAnswers){
+	public List<String> getByPoints(List<Answer> dailyAnswers) {
 		List<User> users = new ArrayList<User>();
 		List<AtomicInteger> points = new ArrayList<AtomicInteger>();
 
 		User user;
 		int index;
-		
-		for(Answer a : dailyAnswers) {
+
+		for (Answer a : dailyAnswers) {
 			user = a.getUser();
 			if (!(users.contains(user))) {
 				users.add(a.getUser());
 				points.add(new AtomicInteger(a.getPoints()));
-			}
-			else {
+			} else {
 				index = users.indexOf(user);
 				points.get(index).set(points.get(index).get() + a.getPoints());
 			}
 		}
 		return ToLeaderboard(users, points);
-		//entityManager.createNamedQuery("User.getByPoints", User.class).getResultList()
+		// entityManager.createNamedQuery("User.getByPoints",
+		// User.class).getResultList()
 	}
-	
-	public List<String> ToLeaderboard(List<User> users, List<AtomicInteger> points){
+
+	public List<String> ToLeaderboard(List<User> users, List<AtomicInteger> points) {
 		List<String> leaderboard = new ArrayList<String>();
-		
-		
-		for(int i = 1; i <= users.size(); i++) {
-			leaderboard.add(i + ".  " + users.get(i-1).getUsername() + ":                      " + points.get(i-1).get() + " points");
-			
+
+		for (int i = 1; i <= users.size(); i++) {
+			leaderboard.add(i + ".  " + users.get(i - 1).getUsername() + ":                      "
+					+ points.get(i - 1).get() + " points");
+
 		}
-		
-		
+
 		return leaderboard;
 	}
-	
-	
+
 //	public User getByEmail(String email) {
 //		return entityManager.createNamedQuery("User.getByEmail", User.class).getSingleResult();
 //	}
