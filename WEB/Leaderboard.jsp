@@ -9,7 +9,6 @@
 <%@ include file="include/style.jsp"%>
 </head>
 <body>
-
 	<%@ include file="include/header.jsp"%>
 
 	<!-- BEGIN MAIN TABLE -->

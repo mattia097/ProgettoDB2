@@ -3,13 +3,10 @@ package it.polimi.db2.progettodb2.services;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import javax.persistence.PersistenceException;
 
-import java.util.ArrayList;
 import java.sql.Date;
 import java.util.List;
 
-import it.polimi.db2.progettodb2.entities.Product;
 import it.polimi.db2.progettodb2.entities.Answer;
 
 @Stateless

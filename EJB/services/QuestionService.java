@@ -40,4 +40,18 @@ public class QuestionService {
 
 		return questions;
 	}
+	
+	public List<Question> getAllQuestions() {
+		return entityManager.createNamedQuery("Question.getAllQuestions", Question.class)
+				.getResultList();
+	}
+	
+	public void insertQuestion(int productId, String questionText) {
+		Product product = entityManager.find(Product.class, productId);
+		Question question = new Question();
+		question.setProduct(product);
+		question.setQuestionText(questionText);
+		entityManager.persist(question);
+		entityManager.flush();
+	}
 }

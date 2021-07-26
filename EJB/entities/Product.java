@@ -22,9 +22,10 @@ import javax.persistence.TemporalType;
 @Entity
 
 @NamedQuery(name = "getDaily", query = "SELECT p FROM Product p WHERE p.date = :date")
+@NamedQuery(name = "getAllProducts", query = "SELECT p FROM Product p ORDER BY p.date ASC")
 
 @Table(name = "Product")
-public class Product implements Serializable {
+public class Product implements Serializable, Comparable<Product> {
 	private static final long serialVersionUID = 1L;
 
 	/* unidirezionale, l'amministratore non ha riferimenti ai prodotti */
@@ -51,6 +52,11 @@ public class Product implements Serializable {
 	@Column(name = "image", nullable = false)
 	private String image;
 
+	
+	public Product() {
+		super();
+	}
+	
 	public String getImage() {
 		return image;
 	}
@@ -59,9 +65,6 @@ public class Product implements Serializable {
 		this.image = imageUrl;
 	}
 
-	public Product() {
-		super();
-	}
 
 	public Administrator getAdministrator() {
 		return administrator;
@@ -99,6 +102,17 @@ public class Product implements Serializable {
 	public String toString() {
 		return "Product [administrator=" + administrator + ", productId=" + productId + ", productName=" + productName
 				+ ", date=" + date + ", image=" + image + "]";
+	}
+
+	@Override
+	public int compareTo(Product o) {
+		if(this.getProductId() > o.getProductId())
+			return 1;
+		else if (this.getProductId() < o.getProductId())
+			return -1;
+		// TODO Auto-generated method stub
+		else
+			return 0;
 	}
 
 	

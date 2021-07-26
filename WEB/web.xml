@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee"
 	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
 	version="4.0">
 
@@ -11,8 +10,8 @@
 		<servlet-name>default</servlet-name>
 		<url-pattern>*.css</url-pattern>
 	</servlet-mapping>
-	
-	
+
+
 	<servlet-mapping>
 		<servlet-name>default</servlet-name>
 		<url-pattern>*.jpg</url-pattern>
@@ -95,7 +94,7 @@
 	</servlet-mapping>
 
 	<!-- *** -->
-	
+
 	<servlet>
 		<servlet-name>StatisticQuestionnaire</servlet-name>
 		<jsp-file>/StatisticQuestionnaire.jsp</jsp-file>
@@ -106,7 +105,7 @@
 	</servlet-mapping>
 
 	<!-- *** -->
-	
+
 	<servlet>
 		<servlet-name>GreetingsServlet</servlet-name>
 		<servlet-class>it.polimi.db2.progettodb2.controllers.GreetingsServlet</servlet-class>
@@ -124,9 +123,9 @@
 		<servlet-name>Greetings</servlet-name>
 		<url-pattern>/Greetings</url-pattern>
 	</servlet-mapping>
-	
-		<!-- *** -->
-		
+
+	<!-- *** -->
+
 	<servlet>
 		<servlet-name>LeaderboardServlet</servlet-name>
 		<servlet-class>it.polimi.db2.progettodb2.controllers.LeaderboardServlet</servlet-class>
@@ -145,4 +144,77 @@
 		<url-pattern>/Leaderboard</url-pattern>
 	</servlet-mapping>
 
+	<!-- *** -->
+
+	<servlet>
+		<servlet-name>CreationServlet</servlet-name>
+		<servlet-class>it.polimi.db2.progettodb2.controllers.CreationServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>CreationServlet</servlet-name>
+		<url-pattern>/CreationServlet</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>Creation</servlet-name>
+		<jsp-file>/Creation.jsp</jsp-file>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Creation</servlet-name>
+		<url-pattern>/Creation</url-pattern>
+	</servlet-mapping>
+	
+	<!-- *** -->
+
+	<servlet>
+		<servlet-name>CreateProduct</servlet-name>
+		<servlet-class>it.polimi.db2.progettodb2.controllers.CreateProduct</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>CreateProduct</servlet-name>
+		<url-pattern>/CreateProduct</url-pattern>
+	</servlet-mapping>
+
+
+	<!-- *** -->
+
+	<servlet>
+		<servlet-name>CreateQuestion</servlet-name>
+		<servlet-class>it.polimi.db2.progettodb2.controllers.CreateQuestion</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>CreateQuestion</servlet-name>
+		<url-pattern>/CreateQuestion</url-pattern>
+	</servlet-mapping>
+	
+		<!-- *** -->
+
+	<servlet>
+		<servlet-name>ModifyProductDate</servlet-name>
+		<servlet-class>it.polimi.db2.progettodb2.controllers.ModifyProductDate</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ModifyProductDate</servlet-name>
+		<url-pattern>/ModifyProductDate</url-pattern>
+	</servlet-mapping>
+	
+<!-- *** -->
+
+	<servlet>
+		<servlet-name>AdministrationServlet</servlet-name>
+		<servlet-class>it.polimi.db2.progettodb2.controllers.AdministrationServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>AdministrationServlet</servlet-name>
+		<url-pattern>/AdministrationServlet</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>Administration</servlet-name>
+		<jsp-file>/Administration.jsp</jsp-file>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Administration</servlet-name>
+		<url-pattern>/Administration</url-pattern>
+	</servlet-mapping>
 </web-app>
