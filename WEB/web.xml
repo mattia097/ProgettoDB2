@@ -6,7 +6,7 @@
 
 	<display-name>ProgettoDB2_WEB</display-name>
 
-	<!-- Da aggiungere per consentire ai file .css di essere trovati -->
+	<!-- Da aggiungere per consentire ai file .xyz di essere trovati -->
 	<servlet-mapping>
 		<servlet-name>default</servlet-name>
 		<url-pattern>*.css</url-pattern>
@@ -16,6 +16,11 @@
 	<servlet-mapping>
 		<servlet-name>default</servlet-name>
 		<url-pattern>*.jpg</url-pattern>
+	</servlet-mapping>
+	
+	<servlet-mapping>
+		<servlet-name>default</servlet-name>
+		<url-pattern>*.gif</url-pattern>
 	</servlet-mapping>
 
 	<!-- *** -->

@@ -1,25 +1,39 @@
 @charset "ISO-8859-1";
 
-#tab-login {
+body {
+	background-color: #cccccc;
+}
+
+h1 {
+	text-align: center;
+	color: blue;
+	font-style: italic;
+}
+
+table {
 	border: 1px solid black;
 }
 
-#tab-login td {
+table td {
 	border: 1px solid black;
 }
 
-#tab-registration {
+table.main-table {
+	background-color: #e6e6e6;
+	position: relative;
+	margin: auto;
+	width: 75%;
 	border: 1px solid black;
 }
 
-#tab-registration td {
+table.main-table td {
 	border: 1px solid black;
 }
 
-#tab-questionnaire-marketing {
-	border: 1px solid black;
+table.main-table td.td-side {
+	width: 20%;
 }
 
-#tab-questionnaire-marketing td {
-	border: 1px solid black;
+table.main-table td.td-center {
+	width: 60%;
 }
