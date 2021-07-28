@@ -18,10 +18,10 @@
 				<h1>Greetings!</h1>
 				<p>
 					Thank you for fulfilling our daily questionnaire! <br> <a
-						href="/ProgettoDB2_WEB/Home">Home page</a>
+						href="/ProgettoDB2_WEB/HomeServlet">Home page</a>
 				</p>
 			</td>
-			<td class="td-side"><img src="new.gif" width="128" hwight="128"></td>
+			<td class="td-side"><img src="new.gif" width="128" height="128"></td>
 		</tr>
 	</table>
 	<!-- END MAIN TABLE -->

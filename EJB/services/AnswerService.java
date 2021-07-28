@@ -27,11 +27,15 @@ public class AnswerService {
 	
 	public List<Answer> getDailyAnswers() {
 		System.out.println("enters daily answers");
-		Date date1 = Date.valueOf("2021-07-21") ; //new java.sql.Date(System.currentTimeMillis())
+		Date date1 = new java.sql.Date(System.currentTimeMillis()); //Date.valueOf("2021-07-21")
 		dailyAnswers = entityManager.createNamedQuery("getDailyAnswer", Answer.class).setParameter("date",date1).getResultList();
-		if (dailyAnswers == null)
-				System.out.println("daily null");
+		
 		return dailyAnswers;
+	}
+	
+	public List<Answer> getAnswersByDate(Date date1) {
+		
+		return entityManager.createNamedQuery("getDailyAnswer", Answer.class).setParameter("date",date1).getResultList();
 	}
 	
 	public void insertAnswer(User user, Question question, int points, Boolean answerBool) {

@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://xmlns.jcp.org/xml/ns/javaee"
 	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
 	version="4.0">
 
 	<display-name>ProgettoDB2_WEB</display-name>
 
-	<!-- Da aggiungere per consentire ai file .xyz di essere trovati -->
+	<!-- Da aggiungere per consentire ai file .css di essere trovati -->
 	<servlet-mapping>
 		<servlet-name>default</servlet-name>
 		<url-pattern>*.css</url-pattern>
@@ -15,11 +16,6 @@
 	<servlet-mapping>
 		<servlet-name>default</servlet-name>
 		<url-pattern>*.jpg</url-pattern>
-	</servlet-mapping>
-	
-	<servlet-mapping>
-		<servlet-name>default</servlet-name>
-		<url-pattern>*.gif</url-pattern>
 	</servlet-mapping>
 
 	<!-- *** -->
@@ -163,7 +159,7 @@
 		<servlet-name>Creation</servlet-name>
 		<url-pattern>/Creation</url-pattern>
 	</servlet-mapping>
-	
+
 	<!-- *** -->
 
 	<servlet>
@@ -186,8 +182,8 @@
 		<servlet-name>CreateQuestion</servlet-name>
 		<url-pattern>/CreateQuestion</url-pattern>
 	</servlet-mapping>
-	
-		<!-- *** -->
+
+	<!-- *** -->
 
 	<servlet>
 		<servlet-name>ModifyProductDate</servlet-name>
@@ -197,8 +193,8 @@
 		<servlet-name>ModifyProductDate</servlet-name>
 		<url-pattern>/ModifyProductDate</url-pattern>
 	</servlet-mapping>
-	
-<!-- *** -->
+
+	<!-- *** -->
 
 	<servlet>
 		<servlet-name>AdministrationServlet</servlet-name>
@@ -216,5 +212,25 @@
 	<servlet-mapping>
 		<servlet-name>Administration</servlet-name>
 		<url-pattern>/Administration</url-pattern>
+	</servlet-mapping>
+
+	<!-- *** -->
+
+	<servlet>
+		<servlet-name>InspectionServlet</servlet-name>
+		<servlet-class>it.polimi.db2.progettodb2.controllers.InspectionServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>InspectionServlet</servlet-name>
+		<url-pattern>/InspectionServlet</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>Inspection</servlet-name>
+		<jsp-file>/Inspection.jsp</jsp-file>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Inspection</servlet-name>
+		<url-pattern>/Inspection</url-pattern>
 	</servlet-mapping>
 </web-app>

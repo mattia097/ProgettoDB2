@@ -14,7 +14,7 @@
 	<!-- BEGIN MAIN TABLE -->
 	<table class="main-table">
 		<tr>
-			<td class="td-side"><img src="new.gif" width="128" hwight="128"></td>
+			<td class="td-side"><img src="new.gif" width="128" height="128"></td>
 			<td class="td-center">
 				<h2 id="h-main-title">Questionario - Sezione Marketing</h2>
 
@@ -45,7 +45,7 @@
 					<input type="submit" value="Successivo">
 				</form>
 			</td>
-			<td class="td-side"><img src="new.gif" width="128" hwight="128"></td>
+			<td class="td-side"><img src="new.gif" width="128" height="128"></td>
 		</tr>
 	</table>
 	<!-- END MAIN TABLE -->

@@ -55,7 +55,7 @@
 					</table>
 				</div>
 			</td>
-			<td class="td-side"><img src="img/new.gif" width="128" hwight="128"></td>
+			<td class="td-side"><img src="img/new.gif" width="128" height="128"></td>
 		</tr>
 	</table>
 	<!-- END MAIN TABLE -->
