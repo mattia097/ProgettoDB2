@@ -45,19 +45,8 @@ public class User implements Serializable {
 
 	private String expertise;
 	
-	@Column(name = "points")
-	private int points;
-	
 	@Column(name = "is_public", nullable = false)
 	private boolean isPublic;
-
-	public int getPoints() {
-		return points;
-	}
-
-	public void setPoints(int points) {
-		this.points = points;
-	}
 
 	public User() {
 		super();
@@ -131,7 +120,7 @@ public class User implements Serializable {
 	public String toString() {
 		return "User [name=" + name + ", surname=" + surname + ", username=" + username + ", password=" + password
 				+ ", email=" + email + ", birthDate=" + birthDate + ", sex=" + sex + ", isPublic=" + isPublic
-				+ ", points=" + points + "]";
+				+ "]";
 	}
 
 	public String getExpertise() {

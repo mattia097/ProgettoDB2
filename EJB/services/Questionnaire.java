@@ -1,6 +1,7 @@
 package it.polimi.db2.progettodb2.services;
 
 import java.util.ArrayList;
+import java.sql.Date;
 import java.util.List;
 
 import javax.ejb.EJB;
@@ -20,12 +21,16 @@ public class Questionnaire {
 	private int age;
 	private String gender;
 	private String expertise;
+	final String dateFormat = "yyyy-MM-dd"; /* SQL-like format */
 	
 	@EJB(name = "it.polimi.db2.progettodb2.services/AnswerService")
 	private AnswerService answerService;
 	
 	@EJB(name = "it.polimi.db2.progettodb2.services/UserService")
 	private UserService userService;
+	
+	@EJB(name = "it.polimi.db2.progettodb2.services/QuestionnaireTableService")
+	private QuestionnaireTableService questionnaireTableService;
 	
     /**
      * Default constructor. 
@@ -65,7 +70,16 @@ public class Questionnaire {
 	 * Salva le informazioni relative al form con le domande sul prodotto del giorno.
 	 * Salva le informazioni relative al form con le domande statistiche.
 	 * */
-	public void save() {		
+	public void save() {
+		Date todayDate = new Date(System.currentTimeMillis());
+		
+		questionnaireTableService.insertQuestionnaireTable(todayDate, this.user, true);
+		
+		/* ! ATTENZIONE ! 
+		 * 
+		 * Prima di inserire le risposte dev'essere inserito il questionario.
+		 * */
+		
 		for (Answer a : answers) {
 			//System.out.println(a);
 			answerService.insertAnswer(a.getUser(), a.getQuestion(), a.getPoints(), a.isAnswer());
