@@ -14,7 +14,7 @@
 	<!-- BEGIN MAIN TABLE -->
 	<table class="main-table">
 		<tr>
-			<td class="td-side"></td>
+			<td class="td-side"><a href="/ProgettoDB2_WEB/Registration">Registrati</a></td>
 			<td class="td-center">
 				<form id="form-login" action="/ProgettoDB2_WEB/LoginServlet"
 					method="post">

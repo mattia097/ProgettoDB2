@@ -52,8 +52,7 @@ public class UserService {
 		}
 	}
 
-	public void register(String name, String surname, String username, String email, String password, Date birthDate,
-			String sex) {
+	public void register(String name, String surname, String username, String email, String password) {
 		User newUser = new User();
 
 		newUser.setName(name);
@@ -61,8 +60,8 @@ public class UserService {
 		newUser.setUsername(username);
 		newUser.setEmail(email);
 		newUser.setPassword(password);
-		newUser.setBirthDate(birthDate);
-		newUser.setSex(sex);
+		//newUser.setBirthDate(birthDate);
+		//newUser.setSex(sex);
 
 		entityManager.persist(newUser); /* Aggiunto al PersistenceContext */
 
@@ -82,7 +81,7 @@ public class UserService {
 		entityManager.flush();
 	}
 	
-	public List<String> getByPoints(List<Answer> dailyAnswers) {
+	/*public List<String> getByPoints(List<Answer> dailyAnswers) {
 		List<User> users = new ArrayList<User>();
 		List<AtomicInteger> points = new ArrayList<AtomicInteger>();
 
@@ -102,7 +101,7 @@ public class UserService {
 		return ToLeaderboard(users, points);
 		// entityManager.createNamedQuery("User.getByPoints",
 		// User.class).getResultList()
-	}
+	}*/
 
 	public List<String> ToLeaderboard(List<User> users, List<AtomicInteger> points) {
 		List<String> leaderboard = new ArrayList<String>();

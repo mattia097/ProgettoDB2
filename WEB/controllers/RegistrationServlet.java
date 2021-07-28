@@ -39,7 +39,7 @@ public class RegistrationServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		//response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
 	/**
@@ -48,14 +48,14 @@ public class RegistrationServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		final String dateFormat = "yyyy-MM-dd"; /* SQL-like format */
+		//final String dateFormat = "yyyy-MM-dd"; /* SQL-like format */
 		String name = null;
 		String surname = null;
 		String username = null;
 		String email = null;
 		String password = null;
-		Date birthDate = null;
-		String sex = null;
+		//Date birthDate = null;
+		//String sex = null;
 
 		try {
 			name = request.getParameter("field-name");
@@ -63,7 +63,7 @@ public class RegistrationServlet extends HttpServlet {
 			username = request.getParameter("field-usr");
 			email = request.getParameter("field-email");
 			password = request.getParameter("field-psw");
-			sex = request.getParameter("field-sex");
+			//sex = request.getParameter("field-sex");
 
 			/* (Rispetta i campi annullabili nel DB) */
 			if (name == null || surname == null || username == null || email == null || password == null) {
@@ -76,24 +76,25 @@ public class RegistrationServlet extends HttpServlet {
 			}
 
 			/* La data è gestita separatamente, con una propria eccezione */
-			try {
+			/*try {
 				birthDate = new SimpleDateFormat(dateFormat).parse(request.getParameter("field-birth-date"));
 			} catch (ParseException e) {
 				throw new DateException("Formato data non valido in fase di registrazione");
-			}
+			}*/
 		} catch (MissingParametersException eParam) {
 			response.sendError(HttpServletResponse.SC_BAD_REQUEST, eParam.getMessage());
 
 			return;
-		} catch (DateException eDate) {
+		} /*catch (DateException eDate) {
 			response.sendError(HttpServletResponse.SC_BAD_REQUEST, eDate.getMessage());
 
 			return;
-		}
+		}*/
 
-		userService.register(name, surname, username, email, password, birthDate, sex);
+		userService.register(name, surname, username, email, password);
 		
-		response.getWriter().append("L'utente potrebbe essere stato inserito correttamente...");
+		//response.getWriter().append("L'utente potrebbe essere stato inserito correttamente...");
+		response.sendRedirect("Login");
 		
 		doGet(request, response);
 	}

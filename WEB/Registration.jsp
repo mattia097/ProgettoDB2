@@ -58,6 +58,8 @@
 							<td><input type="password" name="field-check-psw"
 								id="check-password"></td>
 						</tr>
+						
+						<!--
 						<tr>
 							<td><label>Data di nascita</label></td>
 							<td><input type="date" name="field-birth-date"></td>
@@ -71,6 +73,8 @@
 								<input type="radio" name="field-sex" id="other" value="other">
 							</td>
 						</tr>
+						-->
+						
 						<tr>
 							<td colspan="2"><input type="submit" value="Registrati"
 								onclick="return checkPasswordEquivalence()"></td>

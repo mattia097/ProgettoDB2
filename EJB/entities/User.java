@@ -14,7 +14,7 @@ import javax.persistence.*;
 @Entity
 @Table(name = "user")
 @NamedQuery(name = "User.checkCredentials", query = "SELECT u FROM User u WHERE u.username = ?1 and u.password = ?2")
-@NamedQuery(name = "User.getByPoints", query ="SELECT u FROM User u ORDER BY u.points DESC" )
+//@NamedQuery(name = "User.getByPoints", query ="SELECT u FROM User u ORDER BY u.points DESC" )
 //@NamedQuery(name = "User.getByEmail", query ="SELECT u FROM User u WHERE u.email = :email" )
 public class User implements Serializable {
 	
