@@ -16,11 +16,19 @@
 		<tr>
 			<td class="td-side"></td>
 			<td class="td-center">
-				<h1>This is the leaderboard of today</h1> <c:forEach
-					items="${users}" var="item">
-					<td><c:out value="${item}" /></td>
-					<br>
-				</c:forEach>
+				<h1>This is the leaderboard of today</h1> 
+				<table id="tab-questionnaires">
+					<tr>
+						<th>Username</th>
+						<th>Points</th>
+					</tr>
+					<c:forEach items="${questionnaires}" var="questionnaire">
+						<tr>
+							<td>${questionnaire.getUser().getUsername()}</td>
+							<td>${questionnaire.getPoints()}</td>
+						</tr>
+					</c:forEach>
+				</table>
 
 			</td>
 			<td class="td-side"><a href="/ProgettoDB2_WEB/HomeServlet">Home</a>

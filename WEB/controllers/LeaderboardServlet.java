@@ -1,6 +1,7 @@
 package it.polimi.db2.progettodb2.controllers;
 
 import java.io.IOException;
+import java.sql.Date;
 import java.util.List;
 
 import javax.ejb.EJB;
@@ -11,17 +12,15 @@ import javax.servlet.http.HttpServletResponse;
 
 import it.polimi.db2.progettodb2.entities.Answer;
 import it.polimi.db2.progettodb2.services.AnswerService;
+import it.polimi.db2.progettodb2.services.QuestionnaireTableService;
 import it.polimi.db2.progettodb2.services.UserService;
 
 
 public class LeaderboardServlet extends HttpServlet{
 	private static final long serialVersionUID = 1L;
 	
-	@EJB(name = "it.polimi.db2.progettodb2.services/UserService")
-	private UserService userService;
-	@EJB(name = "it.polimi.db2.progettodb2.services/AnswerService")
-	private AnswerService answerService;
-	
+	@EJB(name = "it.polimi.db2.progettodb2.services/QuestionnaireTableService")
+	private QuestionnaireTableService questionnaireTableService;
 	
 	public LeaderboardServlet() {
 		super();
@@ -30,9 +29,8 @@ public class LeaderboardServlet extends HttpServlet{
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		List<Answer> dailyAnswers = answerService.getDailyAnswers();
-		
-		request.setAttribute("users", userService.getByPoints(dailyAnswers)); //TODO: da correggere
+		Date date1 = new java.sql.Date(System.currentTimeMillis()); 
+		request.setAttribute("questionnaires", questionnaireTableService.getQuestionnaireByDate(date1)); //TODO: da correggere
 		request.getRequestDispatcher("/Leaderboard").forward(request, response);
 	}
 	

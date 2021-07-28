@@ -1,6 +1,7 @@
 package it.polimi.db2.progettodb2.services;
 
 import java.util.Date;
+import java.util.List;
 
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -35,5 +36,10 @@ public class QuestionnaireTableService {
     	
     	entityManager.persist(questionnaireTable);
     	entityManager.flush();
+    }
+    
+    public List<QuestionnaireTable> getQuestionnaireByDate(Date  date){
+		
+		return entityManager.createNamedQuery("getQuestionnaireByDate", QuestionnaireTable.class).setParameter("date",date).getResultList();
     }
 }

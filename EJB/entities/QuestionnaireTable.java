@@ -10,6 +10,7 @@ import javax.persistence.*;
  *
  */
 @Entity
+@NamedQuery(name = "getQuestionnaireByDate", query = "SELECT q FROM QuestionnaireTable q WHERE q.questionnaireDate = :date")
 @Table(name = "questionnaire")
 public class QuestionnaireTable implements Serializable {
 	private static final long serialVersionUID = 1L;

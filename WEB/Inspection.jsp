@@ -17,12 +17,12 @@
 			<td class="td-side"></td>
 			<td class="td-center">
 				<h1>Inspection Page</h1>
-				<table id="tab-products">
+				<table id="tab-answers">
 					<tr>
 						<th>Product Id</th>
 						<th>Product Name</th>
 						<th>Question</th>
-						<!--<th>Answer</th> -->
+						<th>Answer</th>
 						<th>Username</th>
 					</tr>
 					<c:forEach items="${answers}" var="answer">
@@ -30,10 +30,26 @@
 							<td>${answer.getQuestion().getProduct().getProductId()}</td>
 							<td>${answer.getQuestion().getProduct().getProductName()}</td>
 							<td>${answer.getQuestion().getQuestionText()}</td>
+							<td>${answer.isAnswer()}</td>
 							<td>${answer.getUser().getUsername()}</td>
 						</tr>
 					</c:forEach>
-					<tr> <td>date: ${date}  </td> </tr>
+					<tr>
+						<td>date: ${date}</td>
+					</tr>
+				</table>
+
+				<table id="tab-questionnaires">
+					<tr>
+						<th>Username</th>
+						<th>Questionnaire</th>
+					</tr>
+					<c:forEach items="${questionnaires }" var="questionnaire">
+						<tr>
+							<td>${questionnaire.getUser().getUsername()}</td>
+							<td>Canceled</td>
+						</tr>
+					</c:forEach>
 				</table>
 
 				<form id="form-search-questionnaires"

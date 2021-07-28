@@ -54,7 +54,7 @@ public class ProductService {
 	
 	public Product getProductOfTheDay() {
 		
-		Date date1 = Date.valueOf("2021-07-21") ; //new java.sql.Date(System.currentTimeMillis()); 
+		Date date1 = new java.sql.Date(System.currentTimeMillis()); //Date.valueOf("2021-07-21") ; 
 
 		List<Product> products = entityManager.createNamedQuery("getDaily", Product.class).setParameter("date",date1).getResultList();
 		if (products.isEmpty()) {
