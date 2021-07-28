@@ -21,6 +21,7 @@ import it.polimi.db2.progettodb2.services.Questionnaire;
 @EJB(name = "it.polimi.db2.progettodb2.services/Questionnaire", beanInterface = Questionnaire.class)
 public class QuestionnaireMarketingServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	private static final int MAX_POINTS = 1;
 
 	@EJB(name = "it.polimi.db2.progettodb2.services/QuestionService")
 	private QuestionService questionService;
@@ -93,23 +94,22 @@ public class QuestionnaireMarketingServlet extends HttpServlet {
 
 			if (answerText != null) {
 				if (answerText.equals("yes")) {
-					//points = 5;
+					points = MAX_POINTS;
 					currentAnswer = true;
 				} else if (answerText.equals("no")) {
-					//points = 5;
+					points = MAX_POINTS;
 					currentAnswer = false;
 				} else {
 					/* No answer */
-					//points = 0;
+					points = 0;
 					currentAnswer = null;
 				}
 			} else {
 				/* No answer */
-				//points = 0;
+				points = 0;
 				currentAnswer = null;
 			}
 
-			points = 0;
 			questionnaire.insertAnswer(loggedUser, q, points, currentAnswer);
 		}
 
