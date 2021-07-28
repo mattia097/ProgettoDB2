@@ -93,22 +93,23 @@ public class QuestionnaireMarketingServlet extends HttpServlet {
 
 			if (answerText != null) {
 				if (answerText.equals("yes")) {
-					points = 5;
+					//points = 5;
 					currentAnswer = true;
 				} else if (answerText.equals("no")) {
-					points = 5;
+					//points = 5;
 					currentAnswer = false;
 				} else {
 					/* No answer */
-					points = 0;
+					//points = 0;
 					currentAnswer = null;
 				}
 			} else {
 				/* No answer */
-				points = 0;
+				//points = 0;
 				currentAnswer = null;
 			}
 
+			points = 0;
 			questionnaire.insertAnswer(loggedUser, q, points, currentAnswer);
 		}
 
