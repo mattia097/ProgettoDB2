@@ -17,6 +17,7 @@ import it.polimi.db2.progettodb2.entities.User;
 import it.polimi.db2.progettodb2.services.OffensiveWordService;
 import it.polimi.db2.progettodb2.services.QuestionService;
 import it.polimi.db2.progettodb2.services.Questionnaire;
+import it.polimi.db2.progettodb2.services.QuestionnaireTableService;
 
 @EJB(name = "it.polimi.db2.progettodb2.services/Questionnaire", beanInterface = Questionnaire.class)
 public class QuestionnaireMarketingServlet extends HttpServlet {
@@ -25,9 +26,12 @@ public class QuestionnaireMarketingServlet extends HttpServlet {
 
 	@EJB(name = "it.polimi.db2.progettodb2.services/QuestionService")
 	private QuestionService questionService;
-	
+
 	@EJB(name = "it.polimi.db2.progettodb2.services/OffensiveWordService")
 	private OffensiveWordService offensiveWordService;
+
+	@EJB(name = "it.polimi.db2.progettodb2.services/QuestionnaireTableService")
+	private QuestionnaireTableService questionnaireTableService;
 
 	private List<Question> questionsOfProductOfTheDay;
 
@@ -47,11 +51,28 @@ public class QuestionnaireMarketingServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		questionsOfProductOfTheDay = questionService.getQuestionsOfProductOfTheDay();
+		HttpSession session = request.getSession(true);
+		User user = (User) session.getAttribute("user");
 
-		request.setAttribute("questions", questionsOfProductOfTheDay);
-		request.setAttribute("productName", questionService.getProductOfTheDayName());
-		request.getRequestDispatcher("/QuestionnaireMarketing").forward(request, response);
+		/* Se il questionario del giorno non è stato già compilato allora lo mostra */
+		if (!questionnaireTableService.isTodayQuestionnaireAlreadyComplete(user)) {
+			Questionnaire questionnaire = (Questionnaire) session.getAttribute("questionnaire");
+
+			/*
+			 * Se esiste un questionario precedente, le vecchie risposte vengono cancellate.
+			 */
+			if (questionnaire != null) {
+				questionnaire.deleteAnswersList();
+			}
+
+			questionsOfProductOfTheDay = questionService.getQuestionsOfProductOfTheDay();
+			request.setAttribute("questions", questionsOfProductOfTheDay);
+			request.setAttribute("productName", questionService.getProductOfTheDayName());
+			request.getRequestDispatcher("/QuestionnaireMarketing").forward(request, response);
+		} else {
+			/* altrimenti ritorna alla home */
+			response.sendRedirect("HomeServlet");
+		}
 	}
 
 	/**
@@ -70,7 +91,7 @@ public class QuestionnaireMarketingServlet extends HttpServlet {
 		User loggedUser;
 
 		session = request.getSession(true);
-		
+
 		/*
 		 * Istanzia un questionario (se non esiste già) per l'utente corrente e lo salva
 		 * nella sessione.
@@ -83,7 +104,7 @@ public class QuestionnaireMarketingServlet extends HttpServlet {
 			} catch (NamingException e) {
 				e.printStackTrace();
 			}
-			
+
 			session.setAttribute("questionnaire", questionnaire);
 		}
 

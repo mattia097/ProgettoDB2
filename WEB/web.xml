@@ -88,6 +88,17 @@
 		<servlet-name>Home</servlet-name>
 		<url-pattern>/Home</url-pattern>
 	</servlet-mapping>
+	
+	<!-- *** -->
+
+	<servlet>
+		<servlet-name>CancellQuestionnaireServlet</servlet-name>
+		<servlet-class>it.polimi.db2.progettodb2.controllers.CancellQuestionnaireServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>CancellQuestionnaireServlet</servlet-name>
+		<url-pattern>/CancellQuestionnaireServlet</url-pattern>
+	</servlet-mapping>
 
 	<!-- *** -->
 
@@ -232,5 +243,25 @@
 	<servlet-mapping>
 		<servlet-name>Inspection</servlet-name>
 		<url-pattern>/Inspection</url-pattern>
+	</servlet-mapping>
+	
+	<!-- *** -->
+	<servlet>
+		<servlet-name>DeletionServlet</servlet-name>
+		<servlet-class>it.polimi.db2.progettodb2.controllers.DeletionServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>DeletionServlet</servlet-name>
+		<url-pattern>/DeletionServlet</url-pattern>
+	</servlet-mapping>
+	
+	<!-- *** -->
+	<servlet>
+		<servlet-name>Deletion</servlet-name>
+		<jsp-file>/Deletion.jsp</jsp-file>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Deletion</servlet-name>
+		<url-pattern>/Deletion</url-pattern>
 	</servlet-mapping>
 </web-app>

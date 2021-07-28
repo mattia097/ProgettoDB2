@@ -17,7 +17,7 @@ import it.polimi.db2.progettodb2.entities.Question;
 public class QuestionService {
 	@PersistenceContext(unitName = "DB2ProjectEJB")
 	private EntityManager entityManager;
-	
+
 	private Product productOfTheDay;
 
 	/*
@@ -42,12 +42,11 @@ public class QuestionService {
 
 		return questions;
 	}
-	
+
 	public List<Question> getAllQuestions() {
-		return entityManager.createNamedQuery("Question.getAllQuestions", Question.class)
-				.getResultList();
+		return entityManager.createNamedQuery("Question.getAllQuestions", Question.class).getResultList();
 	}
-	
+
 	public void insertQuestion(int productId, String questionText) {
 		Product product = entityManager.find(Product.class, productId);
 		Question question = new Question();
@@ -56,8 +55,21 @@ public class QuestionService {
 		entityManager.persist(question);
 		entityManager.flush();
 	}
-	
+
 	public String getProductOfTheDayName() {
 		return productOfTheDay.getProductName();
+	}
+
+	public void deleteQuestionsByProduct(int productId) {
+		Product product = entityManager.find(Product.class, productId);
+
+		List<Question> questions = entityManager.createNamedQuery("Question.getQuestionsByProduct", Question.class)
+				.setParameter("product", product).getResultList();
+		
+		for (Question q : questions) {
+			entityManager.remove(q);
+		}
+		
+		entityManager.flush();
 	}
 }

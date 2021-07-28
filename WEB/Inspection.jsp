@@ -14,7 +14,9 @@
 	<!-- BEGIN MAIN TABLE -->
 	<table class="main-table">
 		<tr>
-			<td class="td-side"></td>
+			<td class="td-side">
+			<a href="/ProgettoDB2_WEB/AdministrationServlet"> Administration page</a>
+			</td>
 			<td class="td-center">
 				<h1>Inspection Page</h1>
 				<table id="tab-answers">

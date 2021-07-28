@@ -80,7 +80,7 @@
 								</td>
 								<td>
 									<button class='buttons' type='submit' form="questions"
-										name="cancel" formaction="/ProgettoDB2_WEB/HomeServlet"
+										name="cancel" formaction="/ProgettoDB2_WEB/CancellQuestionnaireServlet"
 										formmethod="GET">Cancel</button>
 								</td>
 								<td>

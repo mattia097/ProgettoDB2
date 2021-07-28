@@ -11,26 +11,27 @@ import javax.persistence.*;
  */
 @Entity
 @NamedQuery(name = "getQuestionnaireByDate", query = "SELECT q FROM QuestionnaireTable q WHERE q.questionnaireDate = :date")
+@NamedQuery(name = "getQuestionnaireOfTheDayOfUser", query = "SELECT q FROM QuestionnaireTable q WHERE q.user = :user AND q.questionnaireDate = :date")
 @Table(name = "questionnaire")
 public class QuestionnaireTable implements Serializable {
 	private static final long serialVersionUID = 1L;
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id_questionnaire", nullable = false)
 	private int idQuestionnaire;
-	
+
 	@Temporal(TemporalType.DATE)
 	@Column(name = "questionnaire_date", nullable = false)
 	private Date questionnaireDate;
-	
+
 	@ManyToOne
 	@JoinColumn(name = "email_user", nullable = false)
 	private User user;
-	
+
 	@Column(name = "filled", nullable = false)
 	private boolean filled;
-	
+
 	@Column(name = "points", nullable = false)
 	private int points;
 
@@ -77,5 +78,5 @@ public class QuestionnaireTable implements Serializable {
 	public void setPoints(int points) {
 		this.points = points;
 	}
-   
+
 }
